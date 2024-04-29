@@ -12,6 +12,10 @@
   "dependencies": {
     "nuxt": "^3.11.2",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vuetify-nuxt-module": "^0.13.3"
+  },
+  "devDependencies": {
+    "sass": "^1.75.0"
   }
 }
