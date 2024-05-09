@@ -1,19 +1,23 @@
 <template>
   <v-toolbar class="toolbar pl-4 pr-2">
-    <v-icon
+    <!--<v-icon
         class="toolbar__logo-icon"
         icon="mdi-weather-night"
         size="x-large"
     />
     <v-toolbar-title class="toolbar__title ml-1">
-      sleeping project
+      sleepy
     </v-toolbar-title>
-    <v-spacer/>
     <v-btn
         icon="mdi-cog"
         size="large"
         color="white"
-    />
+    />-->
+    <v-spacer/>
+    <span class="toolbar__link">домой</span>
+    <span class="toolbar__link">курc</span>
+    <span class="toolbar__link">статистика</span>
+    <span class="toolbar__link">настройки</span>
   </v-toolbar>
 </template>
 
@@ -25,19 +29,27 @@
     scoped
     lang="scss"
 >
+@import '../assets/styles/colors';
+@import '../assets/styles/style';
+
 .toolbar {
-  background-color: #8697C3;
+  background-color: transparent;
 
   &__logo-icon {
-    color: white;
+    color: $violet;
   }
 
   &__title {
-    color: white;
+    color: $violet;
     font-size: 22px;
     font-weight: bold;
     font-style: italic;
 
+  }
+
+  &__link {
+    font-size: 20px;
+    margin-left: 35px;
   }
 }
 </style>

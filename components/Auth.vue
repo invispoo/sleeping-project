@@ -45,7 +45,7 @@
           v-model="password"
           :rules="mode === 'signUp' ? [rules.password, rules.length(6)] : [rules.required]"
           color="deep-purple"
-          counter="6"
+          :counter="mode === 'signUp' ? 6 : false"
           type="password"
           variant="outlined"
           density="compact"
@@ -87,6 +87,7 @@
       <v-btn
           :disabled="!isValid"
           :loading="isLoading"
+          @click="processAuth"
           color="#8697C4"
       >
         Подтвердить
@@ -98,9 +99,9 @@
 <script setup lang="ts">
 const mode = ref('signUp');
 
-const login = ref(undefined);
-const email = ref(undefined);
-const password = ref(undefined);
+const login = ref<string | undefined>(undefined);
+const email = ref<string | undefined>(undefined);
+const password = ref<string | undefined>(undefined);
 
 const isValid = ref(false);
 const isLoading = ref(false);
@@ -109,12 +110,29 @@ const form = ref();
 
 const rules = reactive({
   /* TODO: Добавить точку и домен возможно */
-  email: v => !!(v || '').match(/@/) || 'Пожалуйста, введите корректный адрес почты',
-  length: len => v => (v || '').length >= len || `Количество символов должно быть не менее ${len}`,
-  password: v => !!(v || '').match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/) ||
+  email: (v: string) => !!(v || '').match(/@/) || 'Пожалуйста, введите корректный адрес почты',
+  length: (len: number) => (v: string) => (v || '').length >= len || `Количество символов должно быть не менее ${len}`,
+  password: (v: string) => !!(v || '').match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/) ||
       'Пароль должен содержать заглавные буквы, цифры и специальные символы',
-  required: v => !!v || 'Это поле является обязательным',
+  required: (v: string) => !!v || 'Это поле является обязательным',
 });
+
+const processAuth = () => {
+  if (mode.value === 'signUp') {
+    console.log(`Account added to DB ${login.value} ${email.value} ${password.value}`);
+    return navigateTo({
+      path: '/course',
+    })
+  }
+  else {
+    if (login.value === 'a' && password.value === 'b') {
+      console.log(`User entered ${login.value} ${password.value}`);
+      return navigateTo({
+        path: '/course',
+      })
+    }
+  }
+};
 </script>
 
 <style scoped>
