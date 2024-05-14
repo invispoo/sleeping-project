@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Header/>
+    <AppHeader/>
   </header>
   <slot/>
   <!--<footer>
@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 
-import Header from "~/components/Header.vue";
+import AppHeader from "~/components/AppHeader.vue";
 </script>
 
 <style scoped>

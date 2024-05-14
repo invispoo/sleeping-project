@@ -1,50 +1,46 @@
 <template>
   <v-card
-      class="mx-auto"
-      style="max-width: 400px;"
+      class="mx-auto px-6 pt-2"
+      style="width: 500px;"
+      variant="outlined"
   >
-    <v-toolbar
-        color="#3D52A0"
-        cards
-        dark
-        flat
-    >
-      <v-card-title class="text-h6 font-weight-regular">
-        {{ mode === 'signIn' ? 'Вход' : 'Регистрация' }}
+
+      <v-card-title class="auth__card-title">
+        {{ mode === 'signIn' ? 'вход' : 'регистрация' }}
       </v-card-title>
-    </v-toolbar>
+
     <v-form
         ref="form"
         v-model="isValid"
-        class="pa-3 pt-4"
+        class="px-3 pt-6 pb-10"
     >
-      <span class="pl-1">Логин</span>
+      <span class="pl-1">логин</span>
       <v-text-field
           v-model="login"
           :rules="mode === 'signUp' ? [rules.length(3)] : [rules.required]"
-          color="deep-purple"
+          color="black"
           type="text"
           variant="outlined"
           density="compact"
       />
 
       <div v-if="mode === 'signUp'">
-        <span class="pl-1">Почта</span>
+        <span class="pl-1">почта</span>
         <v-text-field
             v-model="email"
             :rules="[rules.email]"
-            color="deep-purple"
+            color="black"
             type="email"
             variant="outlined"
             density="compact"
         />
       </div>
 
-      <span class="pl-1">Пароль</span>
+      <span class="pl-1">пароль</span>
       <v-text-field
           v-model="password"
           :rules="mode === 'signUp' ? [rules.password, rules.length(6)] : [rules.required]"
-          color="deep-purple"
+          color="black"
           :counter="mode === 'signUp' ? 6 : false"
           type="password"
           variant="outlined"
@@ -88,7 +84,7 @@
           :disabled="!isValid"
           :loading="isLoading"
           @click="processAuth"
-          color="#8697C4"
+          class="auth__ok-button"
       >
         Подтвердить
       </v-btn>
@@ -97,7 +93,13 @@
 </template>
 
 <script setup lang="ts">
-const mode = ref('signUp');
+interface Props {
+  mode: string;
+}
+
+const props = defineProps<Props>();
+
+const mode = ref(props.mode);
 
 const login = ref<string | undefined>(undefined);
 const email = ref<string | undefined>(undefined);
@@ -135,13 +137,25 @@ const processAuth = () => {
 };
 </script>
 
-<style scoped>
+<style
+    scoped
+    lang="scss"
+>
+@import '../assets/styles/style';
+@import '../assets/styles/colors';
+
 .auth__link {
   text-align: end;
-  color: #7784BC;
+  font-size: 14px;
+  color: $violet;
+
+  a {
+    font-weight: 900;
+    text-decoration: underline;
+  }
 }
 
-.auth__link a {
-  text-decoration: underline;
+.auth__ok-button {
+  color: $pink;
 }
 </style>
