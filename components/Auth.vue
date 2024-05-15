@@ -123,7 +123,7 @@ const processAuth = () => {
   if (mode.value === 'signUp') {
     console.log(`Account added to DB ${login.value} ${email.value} ${password.value}`);
     return navigateTo({
-      path: '/course',
+      path: '/survey',
     })
   }
   else {

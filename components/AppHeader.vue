@@ -8,7 +8,24 @@
       >
         домой
       </NuxtLink>
-      <span class="toolbar__link">курc</span>
+      <NuxtLink
+          to="/course"
+          class="toolbar__link"
+      >
+        курc
+      </NuxtLink>
+      <NuxtLink
+          to="/"
+          class="toolbar__link"
+      >
+
+      </NuxtLink>
+      <NuxtLink
+          to="/"
+          class="toolbar__link"
+      >
+
+      </NuxtLink>
       <span class="toolbar__link">статистика</span>
       <span class="toolbar__link">настройки</span>
     </nav>
