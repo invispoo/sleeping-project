@@ -124,14 +124,14 @@ const processAuth = () => {
     console.log(`Account added to DB ${login.value} ${email.value} ${password.value}`);
     return navigateTo({
       path: '/survey',
-    })
+    });
   }
   else {
     if (login.value === 'a' && password.value === 'b') {
       console.log(`User entered ${login.value} ${password.value}`);
       return navigateTo({
         path: '/course',
-      })
+      });
     }
   }
 };
