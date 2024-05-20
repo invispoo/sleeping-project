@@ -14,7 +14,7 @@
       >
         курc
       </NuxtLink>
-      <NuxtLink
+      <!--<NuxtLink
           to="/"
           class="toolbar__link"
       >
@@ -25,7 +25,7 @@
           class="toolbar__link"
       >
 
-      </NuxtLink>
+      </NuxtLink>-->
       <span class="toolbar__link">статистика</span>
       <span class="toolbar__link">настройки</span>
     </nav>

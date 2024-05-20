@@ -29,6 +29,7 @@
                 <v-btn
                     class="survey__ok-button"
                     @click="confirm(index)"
+                    :disabled="!question.answer"
                 >
                   Подтвердить
                 </v-btn>
@@ -50,6 +51,7 @@
                 <v-btn
                     class="survey__ok-button"
                     @click="confirm(index)"
+                    :disabled="!question.answer"
                 >
                   Подтвердить
                 </v-btn>
@@ -71,6 +73,7 @@
                 <v-btn
                     class="survey__ok-button"
                     @click="confirm(index)"
+                    :disabled="!question.answer"
                 >
                   Подтвердить
                 </v-btn>
@@ -108,7 +111,7 @@
               icon="mdi-chevron-right"
               variant="plain"
               @click="next"
-              :disabled="!questions[window]?.answer"
+              :disabled="!questions[window - 1]?.answer"
           ></v-btn>
         </v-card-actions>
       </v-card>
@@ -119,7 +122,7 @@
 <script setup lang="ts">
 const questions = reactive([
   {
-    text: 'Сколько часов вы спите?',
+    text: 'Сколько часов в день вы спите?',
     answer: null,
     type: 'input',
     key: 'hours'

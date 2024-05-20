@@ -16,39 +16,53 @@
                 @click="toggle"
                 width="400"
                 height="400"
+                :color="backgroundColors[n % 3]"
         >
-          <v-card-title class="course__card-title">
-            день {{ n }}
+          <v-card-title>
+            <span class="course__card_title">день {{ n }}</span>
           </v-card-title>
           <v-card-text class="d-flex justify-center align-center h-75">
             <NuxtLink :to="`/course/day_${n}`">
-              <v-btn class="course__card-btn">
+              <v-btn
+                  v-if="n < 7"
+                  class="course__card-btn"
+                  :style="`background-color: ${buttonColors[n % 3]}`"
+              >
                 перейти ко дню
               </v-btn>
             </NuxtLink>
+            <v-icon
+                v-if="n > 6"
+                icon="mdi-lock"
+                :color="buttonColors[n % 3]"
+                style="width: 100px"
+                size="x-large"
+                @click="feeDialog = true"
+            />
           </v-card-text>
-
-          <!--<img
-              v-if="n === 1"
-              height="230"
-              width="300"
-              src="../assets/images/1.jpg"
-          >
-          <img
-              v-if="n === 2"
-              height="220"
-              width="300"
-              src="../assets/images/2.jpg"
-          >-->
         </v-card>
       </v-slide-group-item>
     </v-slide-group>
   </v-sheet>
+  <v-dialog v-model="feeDialog" max-width="500">
+    <v-card
+        rounded
+        class="d-flex justify-center align-center px-6"
+    >
+      <v-card-title>Эта часть курса недоступна</v-card-title>
+      <v-card-text>Чтобы получить доступ, пожалуйста, внесите оплату</v-card-text>
+      <v-card actions class="my-4">
+        <v-btn @click="feeDialog = false" variant="text">Подтвердить</v-btn>
+      </v-card>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
-const length = 3;
-const onboarding = ref(0);
+const buttonColors = ['#977FF5', '#EF94D5', '#F0C50B'];
+const backgroundColors = ['#F3F1FF', '#FDF3FA', '#FEF8E6'];
+
+const feeDialog = ref(false);
 </script>
 
 <style
@@ -60,13 +74,16 @@ const onboarding = ref(0);
 
 .course__card {
   &_selected {
-    color: white;
-    background-color: $violet;
+    color: black;
+    background-color: white;
   }
 }
 
+.course__card_title {
+  color: black;
+}
+
 .course__card-btn {
-  background-color: $pink;
   color: white;
 }
 </style>
