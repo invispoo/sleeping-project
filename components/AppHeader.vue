@@ -14,19 +14,18 @@
       >
         курc
       </NuxtLink>
+      <NuxtLink
+          to="/stats"
+          class="toolbar__link"
+      >
+        статистика
+      </NuxtLink>
       <!--<NuxtLink
           to="/"
           class="toolbar__link"
       >
 
-      </NuxtLink>
-      <NuxtLink
-          to="/"
-          class="toolbar__link"
-      >
-
       </NuxtLink>-->
-      <span class="toolbar__link">статистика</span>
       <span class="toolbar__link">настройки</span>
     </nav>
   </v-toolbar>

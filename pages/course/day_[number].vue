@@ -42,31 +42,42 @@
 
       Ну и, конечно, после второго будильника приходи ко мне, мы продолжим наше приключение в мир сна.
     </p>
-    <h1>Задание:</h1>
-    <ol>
-      <li>
-        Выбери удобное время отхода ко сну
-      </li>
-      <li>
-        Установи 2 будильника, как описано выше. Выбери самую приятную мелодию — сразу начнем формировать положительное восприятие вечернего ритуала. Чуть позже я расскажу, почему это важно.
-      </li>
-      <li>
-        Приступай завтра к следующему заданию после того, как сработает основной будильник
-      </li>
-    </ol>
-    <p>Это важно, потом в курсе будет многое завязано на эти будильники.</p>
-    <h1>Исследования, на которые мы с тобой опираемся: </h1>
-    <p>Effect of Light on Human Circadian Physiology
-      The Role of Sleep Hygiene in Promoting Public Health: A Review of Empirical Evidence
-      Time of day effects in, and the relationship between, sleep quality and movement.
-      Effects of an irregular bedtime schedule on sleep quality, daytime sleepiness, and fatigue among university students in Taiwan
-      New perspectives on the role of melatonin in human sleep, circadian rhythms and their regulation
-    </p>
+    <div class="d-flex justify-center">
+      <v-btn @click="taskDialog = true" class="mx-auto mt-6">Перейти к заданию</v-btn>
+    </div>
+    <v-dialog max-width="700" v-model="taskDialog">
+      <v-card>
+        <v-card-title>Задание на сегодня</v-card-title>
+        <v-card-text class="mx-6">
+          <ol>
+            <li>
+              Выбери удобное время отхода ко сну
+            </li>
+            <li>
+              Установи 2 будильника, как описано выше. Выбери самую приятную мелодию — сразу начнем формировать положительное восприятие вечернего ритуала. Чуть позже я расскажу, почему это важно.
+            </li>
+            <li>
+              Приступай завтра к следующему заданию после того, как сработает основной будильник
+            </li>
+          </ol>
+          <p>Это важно, потом в курсе будет многое завязано на эти будильники.</p>
+        </v-card-text>
+        <v-card-actions class="d-flex justify-end">
+          <v-btn @click="taskDialog = false; surveyDialog = true">Прочитано</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog v-model="surveyDialog" max-width="750">
+      <v-card>
+        <Survey/>
+      </v-card>
+    </v-dialog>
   </section>
 </template>
 
 <script setup lang="ts">
-
+const taskDialog = ref(false);
+const surveyDialog = ref(false);
 </script>
 
 <style

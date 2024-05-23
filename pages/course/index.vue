@@ -17,6 +17,7 @@
                 width="400"
                 height="400"
                 :color="backgroundColors[n % 3]"
+                :disabled="n > 1 && n < 7"
         >
           <v-card-title>
             <span class="course__card_title">день {{ n }}</span>
@@ -44,13 +45,13 @@
       </v-slide-group-item>
     </v-slide-group>
   </v-sheet>
-  <v-dialog v-model="feeDialog" max-width="500">
+  <v-dialog v-model="feeDialog" max-width="500" persistent>
     <v-card
         rounded
         class="d-flex justify-center align-center px-6"
     >
       <v-card-title>Эта часть курса недоступна</v-card-title>
-      <v-card-text>Чтобы получить доступ, пожалуйста, внесите оплату</v-card-text>
+      <v-card-text>Чтобы получить доступ, пожалуйста, внесите оплату в личном кабинете</v-card-text>
       <v-card actions class="my-4">
         <v-btn @click="feeDialog = false" variant="text">Подтвердить</v-btn>
       </v-card>
