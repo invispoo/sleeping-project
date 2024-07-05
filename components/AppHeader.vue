@@ -20,13 +20,12 @@
       >
         статистика
       </NuxtLink>
-      <!--<NuxtLink
-          to="/"
+      <NuxtLink
+          to="/settings"
           class="toolbar__link"
       >
-
-      </NuxtLink>-->
-      <span class="toolbar__link">настройки</span>
+        настройки
+      </NuxtLink>
     </nav>
   </v-toolbar>
 </template>
