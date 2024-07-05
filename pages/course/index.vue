@@ -17,7 +17,6 @@
                 width="400"
                 height="400"
                 :color="backgroundColors[n % 3]"
-                :disabled="n > 1 && n < 7"
         >
           <v-card-title>
             <span class="course__card_title">день {{ n }}</span>
